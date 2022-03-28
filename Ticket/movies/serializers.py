@@ -5,25 +5,14 @@ from movies.models import Movie, MovieOption, AttentionList
 class MovieDefaultSerializer(ModelSerializer):
     class Meta:
         model = Movie
-        fields = [
-            'name',
-            'year',
-            'original_title',
-            'video_url1',
-            'video_url2',
-            'video_url3',
-            'video_url4',
-            'cast',
-            'synopsis',
-            'image',
-        ]
+        fields = '__all__'
 
 
-class MovieOption(ModelSerializer):
+class MovieOptionSerializer(ModelSerializer):
     class Meta:
         model = MovieOption
         fields = [
-            'movie',
+            'id',
             'grade',
             'genre',
             'runningtime',
@@ -31,7 +20,7 @@ class MovieOption(ModelSerializer):
         ]
 
 
-class AttentionList(ModelSerializer):
+class AttentionListSerializer(ModelSerializer):
     class Meta:
         model = AttentionList
         fields = [
@@ -43,12 +32,23 @@ class AttentionList(ModelSerializer):
 
 
 class MovieDetailSerializer(ModelSerializer):
-    movie_option = MovieOption(many=True, read_only=True)
-    movie_Attention_list = AttentionList(many=True, read_only=True)
+    movie_option = MovieOptionSerializer(many=True, read_only=True)
+    movie_Attention_list = AttentionListSerializer(many=True, read_only=True)
 
     class Meta:
         model = Movie
-        fields = MovieDefaultSerializer.Meta.fields + [
+        fields = [
+            'name',
+            'year',
+            'original_title',
+            'video_url1',
+            'video_url2',
+            'video_url3',
+            'video_url4',
+            'cast',
+            'synopsis',
+            'image',
             'movie_option',
-            'movie_Attention_list'
+            'movie_Attention_list',
         ]
+

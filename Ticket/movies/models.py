@@ -14,6 +14,9 @@ class Movie(models.Model):
     synopsis = models.TextField(verbose_name='시놉시스')
     image = models.ImageField(default='media/')
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         db_table = 'Movie'
 
@@ -35,6 +38,9 @@ class MovieOption(models.Model):
     class Meta:
         db_table = 'MovieOption'
 
+    def __str__(self):
+        return f'{self.movie.name}_기본정보'
+
 
 class AttentionList(models.Model):
     is_watchlist = models.BooleanField(default=False, db_index=True)
@@ -44,3 +50,6 @@ class AttentionList(models.Model):
 
     class Meta:
         db_table = 'AttentionList'
+
+    def __str__(self):
+        return f'관심목록'

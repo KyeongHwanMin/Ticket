@@ -461,7 +461,7 @@ python manage.py runserver
 |400| 관심 목록이 없는 경우|
 
 
-### 영화 삭제
+### 관심목록 삭제
 [요청]
 - URL: GET /api/v1/attentionlist/:pk/
   - Path 파라미터 설명 : attentionlist Movies의 식별 아이디를 입력합니다.

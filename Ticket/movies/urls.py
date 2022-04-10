@@ -8,3 +8,4 @@ urlpatterns = [
     path('api/v1/attentionlist/<int:pk>', AttentionDetailView.as_view()),
     path('api-auth/', include('rest_framework.urls')),
 ]
+

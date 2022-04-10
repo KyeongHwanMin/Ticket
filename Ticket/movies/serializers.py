@@ -21,9 +21,11 @@ class MovieOptionSerializer(ModelSerializer):
 
 
 class AttentionListSerializer(ModelSerializer):
+
     class Meta:
         model = AttentionList
         fields = [
+            'movie_id',
             'is_watchlist',
             'is_seen',
             'is_like',

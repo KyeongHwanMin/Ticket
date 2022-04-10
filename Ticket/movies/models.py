@@ -4,7 +4,7 @@ from django.db import models
 
 
 class Movie(models.Model):
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
     name = models.CharField(max_length=100, verbose_name='영화제목')
     year = models.PositiveIntegerField(default=0, verbose_name='제작년도')
     original_title = models.CharField(max_length=100, null=True, verbose_name="원제")
@@ -46,11 +46,11 @@ class MovieOption(models.Model):
 
 class AttentionList(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, related_name='user')
-    movie = models.ForeignKey(Movie, on_delete=models.PROTECT, related_name='movie_Attention_list')
-    is_watchlist = models.BooleanField(default=False)
-    is_seen = models.BooleanField(default=False)
-    is_like = models.BooleanField(default=False)
-    is_dislike = models.BooleanField(default=False)
+    movie = models.ForeignKey(Movie, on_delete=models.PROTECT, related_name='movie')
+    is_watchlist = models.BooleanField(verbose_name="시청목록")
+    is_seen = models.BooleanField(verbose_name="Seen")
+    is_like = models.BooleanField(verbose_name="좋아요")
+    is_dislike = models.BooleanField(verbose_name="Dislike")
 
     class Meta:
         db_table = 'AttentionList'

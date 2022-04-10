@@ -10,7 +10,7 @@
 - Python 3.9.x
 - Django 4.0.x
 - djangorestframework 3.13.x
-- Pillow==9.0.x
+- Pillow 9.0.x
 - SQL lite3
 
   <br>
